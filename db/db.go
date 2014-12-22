@@ -1,7 +1,6 @@
 package db
 
 import (
-	"fmt"
 	"strconv"
 
 	"github.com/swhite24/envreader"
@@ -54,14 +53,9 @@ func New() *SimpleSession {
 func (s *SimpleSession) Start(name string) {
 	s.DbName = name
 
-	fmt.Println(s.Env)
-
-	fmt.Println(envSet)
-
 	// Read the env vars that you want to use
 	dbEnv := envreader.Read(s.Env.Host, s.Env.Port, s.Env.User, s.Env.Pass)
 
-	fmt.Println("dbEnv: ", dbEnv)
 	connection = "mongodb://"
 
 	// if no Env.User/Pass, skip setting that part of the connection
