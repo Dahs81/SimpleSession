@@ -6,7 +6,7 @@ import (
 
 	"github.com/swhite24/envreader"
 
-	"labix.org/v2/mgo"
+	"gopkg.in/mgo.v2"
 )
 
 var (

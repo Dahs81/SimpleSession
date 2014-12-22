@@ -44,8 +44,10 @@ func TestStart(t *testing.T) {
 }
 
 func TestSetEnv(t *testing.T) {
+
 	d := New()
-	d.SetEnv(Env{Host: "MONGO_TEST_HOST", Port: "MONGO_TEST_PORT", User: "", Pass: ""})
+	env := Env{Host: "MONGO_TEST_HOST", Port: "MONGO_TEST_PORT", User: "", Pass: ""}
+	d.SetEnv(env)
 
 	if envSet != true {
 		t.Errorf("Error")
