@@ -81,17 +81,24 @@ func (s *SimpleSession) Start(name string) {
 	connection += s.Host + ":"
 	connection += s.Port + "/" + name
 
-	fmt.Println("CONN: ", connection)
-
 	session, err := mgo.Dial(connection)
 	if err != nil {
 		panic(err)
 	}
 
-	// defer session.Close()
+	// Uncomment this and the Test struct below if you want to actually test inserting into the DB
+	// tt := Test{Name: "yourname"}
+	// tt.ID = bson.NewObjectId()
+	// session.DB(name).C("test").Insert(tt)
 
 	s.Session = session
 }
+
+// Test - Uncomment this to test this out
+// type Test struct {
+// 	ID   bson.ObjectId `json:"id" bson:"_id"`
+// 	Name string        `json:"name" bson:"name"`
+// }
 
 // SetDbName -
 func (s *SimpleSession) SetDbName(name string) {
