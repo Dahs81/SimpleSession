@@ -16,13 +16,13 @@ var (
 type (
 	// SimpleSession - Wrapper around Session
 	SimpleSession struct {
-		Session *mgo.Session
-		Host    string
-		Port    string
-		User    string
-		Pass    string
-		Env     Env
-		DbName  string
+		*mgo.Session
+		Host   string
+		Port   string
+		User   string
+		Pass   string
+		Env    Env
+		DbName string
 	}
 
 	// Env - Stores the Environment variables common to mongodb
@@ -40,12 +40,11 @@ func New() *SimpleSession {
 	envSet = false
 
 	return &SimpleSession{
-		Session: nil,
-		User:    "",          // Default has no username
-		Pass:    "",          // Default has password
-		Host:    "localhost", // Default Host
-		Port:    "27017",     // Default Port
-		Env:     Env{},
+		User: "",          // Default has no username
+		Pass: "",          // Default has password
+		Host: "localhost", // Default Host
+		Port: "27017",     // Default Port
+		Env:  Env{},
 	}
 }
 
